@@ -6,14 +6,13 @@ include('config/config.php');
 $conn = OpenCon();
 $index_url = '/brahm_final/index.php';
 
-if(isset($_SESSION) && isset($_SESSION['token'])){
-    include('model/CheckLoginModel.php');    
+if (isset($_SESSION) && isset($_SESSION['token'])) {
+    include('model/CheckLoginModel.php');
     $check = new CheckLoginModel($conn, $base_url, $index_url);
     $check->checkLogin($_SESSION['token']);
-}else if($_SERVER['REQUEST_URI'] != '/brahm_final/index.php'){
-    header('Location: '.$base_url.'index.php');
-}else{
-    
+} else if ($_SERVER['REQUEST_URI'] != '/brahm_final/index.php') {
+    header('Location: ' . $base_url . 'index.php');
+} else {
 }
 
 $page_title = "East London & Essex Brahm Samaj";
@@ -40,4 +39,3 @@ $reportModel = new ReportModel($conn);
 
 include('../export_function/export-excel.php');
 include('../export_function/clsMSDocGenerator.php');
-?>
