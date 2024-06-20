@@ -81790,3 +81790,15 @@ body {
     width: 100%;
     max-width: 750px;
 }
+
+.login-wrapper img{
+  width:100%;
+}
+
+@media (max-width: 676px) {
+  table{
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+  }
+}
