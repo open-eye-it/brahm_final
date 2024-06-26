@@ -65,9 +65,11 @@ $page_base_url = $base_url . 'report/unpaid-member-view.php';
 					<div class="card-title">
 						<h3 class="card-label">Current Unpaid Members</h3>
 					</div>
-					<div class="card-toolbar">
-						<a href="<?php echo $base_url . 'report/unpaid-member-export.php?year=' . $year_arr[1]; ?>" class="btn btn-primary"><i class="fa fa-file-export text-white"></i> Export</a>
-					</div>
+					<?php if (in_array(5, $_SESSION['permission']) || $_SESSION['admin_type'] == 1) { ?>
+						<div class="card-toolbar">
+							<a href="<?php echo $base_url . 'report/unpaid-member-export.php?year=' . $year_arr[1]; ?>" class="btn btn-primary"><i class="fa fa-file-export text-white"></i> Export</a>
+						</div>
+					<?php } ?>
 				</div>
 				<div class="card-body">
 					<!--begin: Datatable-->

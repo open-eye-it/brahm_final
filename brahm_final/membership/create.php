@@ -1,5 +1,6 @@
 <?php include('../layout/header.php');
 $createMsg = '';
+$family_id = '';
 if (isset($_POST['member_create'])) {
     $InsertArr = [
         'native' => $_POST['native'],
@@ -17,17 +18,18 @@ if (isset($_POST['member_create'])) {
         'remarks' => $_POST['remarks'],
     ];
     $createRes = $membershipModel->createFamily($InsertArr);
-    if ($createRes == 'success') {
+    if ($createRes == 'fail') {
         $createMsg = $createRes;
     } else {
-        $createMsg = $createRes;
+        $createMsg = 'success';
+        $family_id = $createRes;
     }
 }
 ?>
 <script>
     let createMsg = "<?php echo $createMsg; ?>";
     if (createMsg === 'success') {
-        window.location.href = "<?php echo $base_url; ?>" + "membership/list.php";
+        window.location.href = "<?php echo $base_url; ?>" + "membership/member-create.php?family=<?php echo $family_id; ?>";
     }
 </script>
 <!--begin::Container-->

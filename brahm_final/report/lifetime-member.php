@@ -55,9 +55,11 @@ $page_base_url = $base_url . 'report/report-lifetime-member.php';
 					<div class="card-title">
 						<h3 class="card-label">LifeTime Members</h3>
 					</div>
-					<div class="card-toolbar">
-						<a href="<?php echo $base_url . 'report/export-lifetime-member.php'; ?>" class="btn btn-primary"><i class="fa fa-file-export text-white"></i> Export</a>
-					</div>
+					<?php if (in_array(5, $_SESSION['permission']) || $_SESSION['admin_type'] == 1) { ?>
+						<div class="card-toolbar">
+							<a href="<?php echo $base_url . 'report/export-lifetime-member.php'; ?>" class="btn btn-primary"><i class="fa fa-file-export text-white"></i> Export</a>
+						</div>
+					<?php } ?>
 				</div>
 				<div class="card-body">
 					<!--begin: Datatable-->
